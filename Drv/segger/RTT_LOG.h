@@ -46,7 +46,7 @@ typedef enum
         RTT_LOG_PRINT(RTT_LOG_COLOR_WARN "[WARN] %s:%d: " RTT_CTRL_RESET format RTT_LOG_NEWLINE_SIGN, GET_FILE_NAME(__FILE__), __LINE__, ##__VA_ARGS__); \
     }
 
-// 错误log输出 玫红色
+// 错误log输出 红色
 #define RTT_LOG_ERROR(format, ...)                                                                                                                         \
     if (RTT_LOG_LEVEL <= LOG_LEVEL_ERROR)                                                                                                                  \
     {                                                                                                                                                      \

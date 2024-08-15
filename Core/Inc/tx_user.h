@@ -118,7 +118,7 @@
    define is negated, thereby forcing the stack fill which is necessary for the stack checking
    logic.  */
 
-/*#define TX_ENABLE_STACK_CHECKING*/
+#define TX_ENABLE_STACK_CHECKING
 
 /* Determine if preemption-threshold should be disabled. By default, preemption-threshold is
    enabled. If the application does not use preemption-threshold, it may be disabled to reduce
@@ -201,7 +201,7 @@
 /* Determine if thread performance gathering is required by the application. When the following is
    defined, ThreadX gathers various thread performance information. */
 
-/*#define TX_THREAD_ENABLE_PERFORMANCE_INFO*/
+#define TX_THREAD_ENABLE_PERFORMANCE_INFO
 
 /* Determine if timer performance gathering is required by the application. When the following is
    defined, ThreadX gathers various timer performance information. */

@@ -6,6 +6,6 @@
 
 #include "mainTask.h"
 
-#define mainTask_STACK_SIZE 512
+#define mainTask_STACK_SIZE 1024
 
 #endif

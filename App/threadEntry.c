@@ -1,6 +1,13 @@
 #include "threadEntry.h"
 
+#include "RTT_LOG.h"
+
 TX_THREAD mainTaskHandle;
+
+VOID stackOverflowHandler(TX_THREAD *thread_ptr)
+{
+    RTT_LOG_ERROR("Stack of \"%s\" over flow.", thread_ptr->tx_thread_name);
+}
 
 UINT thread_init(VOID *memory_ptr)
 {
@@ -18,19 +25,22 @@ UINT thread_init(VOID *memory_ptr)
     }
 
     /* Create main Task.  */
-    if (tx_thread_create(&mainTaskHandle,
-                         "mainTask",
-                         mainTask,
-                         0,
-                         TaskStack,
-                         mainTask_STACK_SIZE,
-                         20,
-                         20,
-                         TX_NO_TIME_SLICE,
-                         TX_AUTO_START) != TX_SUCCESS)
+    if (tx_thread_create(&mainTaskHandle,     // 任务指针
+                         "mainTask",          // 任务名称
+                         mainTask,            // 任务入口函数
+                         0,                   // 任务入口参数
+                         TaskStack,           // 任务栈的起始地址
+                         mainTask_STACK_SIZE, // 内存区域大小 K
+                         20,                  // 优先级20 (0~TX_MAX_PRIORITES-1)0  表示最高优先级
+                         20,                  // 禁用抢占的最高优先级
+                         TX_NO_TIME_SLICE,    // 时间切片值范围为 1 ~ 0xFFFF(TX_NO_TIME_SLICE = 0)
+                         TX_AUTO_START        // 线程自动启动
+                         ) != TX_SUCCESS)
     {
         return TX_THREAD_ERROR;
     }
+
+    tx_thread_stack_error_notify(stackOverflowHandler);
 
     return ret;
 }
