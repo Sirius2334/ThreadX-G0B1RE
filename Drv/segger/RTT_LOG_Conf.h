@@ -4,9 +4,14 @@
 /**
  * @brief segger rtt buffer size
  * @note UP是上行, 即输出; DOWN是下行, 即输入
+ *
+ * @note 如果使用的是慢速的J-Link的话(比如F072),
+ *       上行缓存最好大一点, 不然大量数据发送的时候
+ *       有时显示不全.
  */
-#define BUFFER_SIZE_UP (512)
+#define BUFFER_SIZE_UP (1024)
 #define BUFFER_SIZE_DOWN (128)
+#define SEGGER_RTT_PRINTF_BUFFER_SIZE (64)
 
 /**
  * @brief Enable segger rtt log
@@ -27,7 +32,6 @@
  * @brief RTT LOG使用的换行符
  */
 #define RTT_LOG_NEWLINE_SIGN "\r\n"
-
 
 /**
  * @brief RTT LOG不同等级的颜色

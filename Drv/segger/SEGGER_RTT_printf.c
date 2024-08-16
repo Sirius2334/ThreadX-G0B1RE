@@ -543,29 +543,28 @@ int SEGGER_RTT_vprintf(unsigned BufferIndex, const char *sFormat, va_list *pPara
         break;
       case 'f':
       case 'F':
-        // break;
-        {
-          float fv = (float)va_arg(*pParamList, double); // Retrieves the input floating point value
+      {
+        float fv = (float)va_arg(*pParamList, double); // Retrieves the input floating point value
 
-          v = (int)fv;                                                         // Take the positive integer part
-          _PrintInt(&BufferDesc, v, 10u, FieldWidth, FieldWidth, FormatFlags); // According to an integer
-          _StoreChar(&BufferDesc, '.');                                        // Display decimal point
+        v = (int)fv;                                                         // Take the positive integer part
+        _PrintInt(&BufferDesc, v, 10u, FieldWidth, FieldWidth, FormatFlags); // According to an integer
 
-          if ((NumDigits == 0) || (NumDigits > 6))
-            NumDigits = 6;
-          unsigned int powN = _pow(10, NumDigits);
+        if ((NumDigits == 0) || (NumDigits > 6)) // 最高打印6位小数
+          NumDigits = 6;
 
-          fv = fv - v;
+        _StoreChar(&BufferDesc, '.'); // Display decimal point
+        unsigned int powN = _pow(10, NumDigits);
 
-          fv = fv < 0 ? -fv : fv;
-          fv *= powN;
-          v = (int)(fv);
-          if (fv - v >= 0.5f)
-            v += 1;
+        fv = fv - v;            // 取小数部分
+        fv = fv < 0 ? -fv : fv; // 取小数的绝对值
+        fv *= powN;             // 根据显示精度取整
+        v = (int)(fv);
+        if (fv - v >= 0.5f) // 四舍五入
+          v += 1;
 
-          _PrintUnsigned(&BufferDesc, v, 10u, NumDigits, FieldWidth, FormatFlags | FORMAT_FLAG_LEFT_JUSTIFY | FORMAT_FLAG_PAD_ZERO); // Display three decimal places
-        }
-        break;
+        _PrintUnsigned(&BufferDesc, (unsigned)v, 10u, NumDigits, FieldWidth, FormatFlags | FORMAT_FLAG_LEFT_JUSTIFY | FORMAT_FLAG_PAD_ZERO); // Display three decimal places
+      }
+      break;
       default:
         break;
       }

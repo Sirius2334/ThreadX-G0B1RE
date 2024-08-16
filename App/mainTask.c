@@ -5,9 +5,11 @@ VOID mainTask(ULONG id)
 {
     (void)id;
 
-    // float pi = 3.14f;
-    // float pi = 3.14159265358979f;
-    float pi = 3.12595f;
+    float data_float = 1234.12595f;
+    double data_double = 1234.12595f;
+
+    float short_pi = 3.14f;
+    float pi = 3.1415926535f;
 
     // RTT_LOG_INFO("hello, %.3f", 1.2);
     // RTT_LOG_ERROR("hello, %.3f", 1.2);
@@ -21,23 +23,36 @@ VOID mainTask(ULONG id)
     //              (int)mainTaskHandle.tx_thread_stack_end - (int)mainTaskHandle.tx_thread_stack_highest_ptr,
     //              mainTaskHandle.tx_thread_name);
 
-    SEGGER_RTT_printf(0, "pi = %.2f\r\n", pi);
-    SEGGER_RTT_printf(0, "pi = %.3f\r\n", pi);
-    SEGGER_RTT_printf(0, "pi = %.4f\r\n", pi);
-    SEGGER_RTT_printf(0, "pi = %.5f\r\n", pi);
-    SEGGER_RTT_printf(0, "pi = %.6f\r\n", pi);
-    SEGGER_RTT_printf(0, "pi = %.7f\r\n", pi);
-    SEGGER_RTT_printf(0, "pi = %.8f\r\n", pi);
-    SEGGER_RTT_printf(0, "pi = %.9f\r\n", pi);
-    SEGGER_RTT_printf(0, "pi = %.10f\r\n", pi);
-    SEGGER_RTT_printf(0, "pi = %.11f\r\n", pi);
+    SEGGER_RTT_printf(0, "data_float = %.0f\n", data_float);
+    SEGGER_RTT_printf(0, "data_float = %.1f\n", data_float);
+    SEGGER_RTT_printf(0, "data_float = %.2f\n", data_float);
+    SEGGER_RTT_printf(0, "data_float = %.3f\n", data_float);
+    SEGGER_RTT_printf(0, "data_float = %.4f\n", data_float);
+    SEGGER_RTT_printf(0, "data_float = %.5f\n", data_float);
+    SEGGER_RTT_printf(0, "data_float = %.6f\n", data_float);
+    SEGGER_RTT_printf(0, "data_float = %.7f\n", data_float);
+    SEGGER_RTT_printf(0, "-data_float = %f\n", -data_float);
+    SEGGER_RTT_printf(0, "-data_float = %03.5f\n", -data_float);
+    SEGGER_RTT_printf(0, "-data_float = %6.5lf\n", -data_float);
 
-    SEGGER_RTT_printf(0, "-pi = %f\r\n", -pi);
-    SEGGER_RTT_printf(0, "-pi = %03.5f\r\n", -pi);
-    SEGGER_RTT_printf(0, "-pi = %3.5lf\r\n", -pi);
+    SEGGER_RTT_printf(0, "data_double = %.0lf\n", data_double);
+    SEGGER_RTT_printf(0, "data_double = %.1lf\n", data_double);
+    SEGGER_RTT_printf(0, "data_double = %.2lf\n", data_double);
+    SEGGER_RTT_printf(0, "data_double = %.3lf\n", data_double);
+    SEGGER_RTT_printf(0, "data_double = %.4lf\n", data_double);
+    SEGGER_RTT_printf(0, "data_double = %.5lf\n", data_double);
+    SEGGER_RTT_printf(0, "data_double = %.6lf\n", data_double);
+    SEGGER_RTT_printf(0, "data_double = %.7lf\n", data_double);
+    SEGGER_RTT_printf(0, "-data_double = %lf\n", -data_double);
+    SEGGER_RTT_printf(0, "-data_double = %03.5lf\n", -data_double);
+    SEGGER_RTT_printf(0, "-data_double = %6.5lf\n", -data_double);
+
+    SEGGER_RTT_printf(0, "pi = %f\n", short_pi);
+    SEGGER_RTT_printf(0, "pi = %f\n", pi);
 
     while (1)
     {
+        SEGGER_RTT_printf(0, "pi = %f\n", pi);
 
         tx_thread_sleep(1000);
     }
