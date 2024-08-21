@@ -131,7 +131,7 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* tim_baseHandle)
     /* TIM1_CH2 Init */
     hdma_tim1_ch2.Instance = DMA1_Channel1;
     hdma_tim1_ch2.Init.Request = DMA_REQUEST_TIM1_CH2;
-    hdma_tim1_ch2.Init.Direction = DMA_PERIPH_TO_MEMORY;
+    hdma_tim1_ch2.Init.Direction = DMA_MEMORY_TO_PERIPH;
     hdma_tim1_ch2.Init.PeriphInc = DMA_PINC_DISABLE;
     hdma_tim1_ch2.Init.MemInc = DMA_MINC_ENABLE;
     hdma_tim1_ch2.Init.PeriphDataAlignment = DMA_PDATAALIGN_HALFWORD;
