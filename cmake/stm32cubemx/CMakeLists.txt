@@ -28,6 +28,8 @@ target_sources(stm32cubemx INTERFACE
     ../../Core/Src/main.c
     ../../Core/Src/gpio.c
     ../../Core/Src/app_threadx.c
+    ../../Core/Src/dma.c
+    ../../Core/Src/tim.c
     ../../Core/Src/stm32g0xx_it.c
     ../../Core/Src/stm32g0xx_hal_msp.c
     ../../Core/Src/stm32g0xx_hal_timebase_tim.c

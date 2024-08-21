@@ -1,7 +1,6 @@
 #ifndef __RTT_LOG_H_
 #define __RTT_LOG_H_
 
-#include <stdio.h>
 #include <stdarg.h>
 #include <string.h>
 

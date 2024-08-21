@@ -50,12 +50,14 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user sources here
     "App/threadEntry.c"
     "App/mainTask.c"
+    "Drv/printf.c"
 )
 
 # Add include paths
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined include paths
     "App"
+    "Drv"
 )
 
 # Add project symbols (macros)

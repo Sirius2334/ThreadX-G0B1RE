@@ -1,5 +1,8 @@
 #include "RTT_LOG.h"
 
+#include "printf.h"
+#include <stdio.h>
+
 void rtt_init(void)
 {
     SEGGER_RTT_Init();
